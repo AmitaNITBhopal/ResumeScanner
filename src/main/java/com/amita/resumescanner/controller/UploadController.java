@@ -31,7 +31,7 @@ public class UploadController {
 	    } catch (Exception e) {
 	      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 	    } 
-	    return ResponseEntity.ok("File uploaded successfully.");
+	    return ResponseEntity.ok("File uploaded successfully");
 	  }
 
 	@GetMapping("/")
