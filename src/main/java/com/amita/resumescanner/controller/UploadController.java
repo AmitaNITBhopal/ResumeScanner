@@ -23,15 +23,16 @@ public class UploadController {
 	@PostMapping("/upload")
 	public ResponseEntity<?> handleFileUpload( @RequestParam("file") MultipartFile file ) {
 
+		String uploadFileName = "";
 	    String fileName = file.getOriginalFilename();
 	    try {
-	    	String uploadFileName = uploadPath + fileName;
+	    	uploadFileName = uploadPath + fileName;
 	    	System.out.println("File name: " + uploadFileName);
 	      file.transferTo( new File(uploadFileName));
 	    } catch (Exception e) {
 	      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 	    } 
-	    return ResponseEntity.ok("File uploaded successfully");
+	    return ResponseEntity.ok(uploadFileName);
 	  }
 
 	@GetMapping("/")
